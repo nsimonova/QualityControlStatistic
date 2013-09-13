@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QualityControlStatistic", "QualityControlStatistic\QualityControlStatistic.csproj", "{C84C8EFF-7752-4958-AB09-3FD7EB5A136C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QualityControlStatistic.Tests", "QualityControlStatistic.Tests\QualityControlStatistic.Tests.csproj", "{8B26EAF7-5A20-4463-9B54-84BD2A81C607}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{E500D5BF-530E-4C6B-87CA-C4D4BBA8FCEA}"
+	ProjectSection(SolutionItems) = preProject
+		Local.testsettings = Local.testsettings
+		QualityControlStatistic.vsmdi = QualityControlStatistic.vsmdi
+		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = QualityControlStatistic.vsmdi
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C84C8EFF-7752-4958-AB09-3FD7EB5A136C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C84C8EFF-7752-4958-AB09-3FD7EB5A136C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C84C8EFF-7752-4958-AB09-3FD7EB5A136C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C84C8EFF-7752-4958-AB09-3FD7EB5A136C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8B26EAF7-5A20-4463-9B54-84BD2A81C607}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B26EAF7-5A20-4463-9B54-84BD2A81C607}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B26EAF7-5A20-4463-9B54-84BD2A81C607}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B26EAF7-5A20-4463-9B54-84BD2A81C607}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
