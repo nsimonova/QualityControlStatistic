@@ -17,10 +17,12 @@ namespace QualityControlStatistic.Shewhart.Group
 
             foreach (var measurementsInGroup in groupValues)
             {
+                ValidateSize(measurementsInGroup, groupSize, totalGroupsCount);
+
                 double groupAverage = StatisticFunctions.ArithmeticAverage(measurementsInGroup.Value);
                 totalAverage += groupAverage;
 
-                double groupDifference = StatisticFunctions.GetAbsoluteDifference(measurementsInGroup.Value);
+                double groupDifference = StatisticFunctions.GetDifference(measurementsInGroup.Value);
                 totalDifference += groupDifference;
 
                 chartBuilder.AddMeasurement(measurementsInGroup.Mark, groupAverage);

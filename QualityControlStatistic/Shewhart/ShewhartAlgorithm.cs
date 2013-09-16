@@ -7,6 +7,8 @@ namespace QualityControlStatistic.Shewhart
         protected ShewhartAlgorithm(IChartBuilder<TMark, TResult> chartBuilder)
         {
             this.chartBuilder = chartBuilder;
+            //TODO make constructor with this parameter
+            this.coefficients = new HardCodedShewhartCoefficientsTable();
         }
 
         protected IShewhartCoefficientsTable coefficients;

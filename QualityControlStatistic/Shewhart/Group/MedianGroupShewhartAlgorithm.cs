@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 
 namespace QualityControlStatistic.Shewhart.Group
@@ -12,15 +13,16 @@ namespace QualityControlStatistic.Shewhart.Group
         {
             double totalDifference = 0;
             double totalMedian = 0;
-
             int totalGroupsCount = 0;
 
             foreach (IMeasurement<TMark, double[]> measurementsInGroup in groupValues)
             {
+                ValidateSize(measurementsInGroup, groupSize, totalGroupsCount);
+
                 double groupMedian = StatisticFunctions.Median(measurementsInGroup.Value);
                 totalMedian += groupMedian;
 
-                double groupDifference = StatisticFunctions.GetAbsoluteDifference(measurementsInGroup.Value);
+                double groupDifference = StatisticFunctions.GetDifference(measurementsInGroup.Value);
                 totalDifference += groupDifference;
 
                 chartBuilder.AddMeasurement(measurementsInGroup.Mark, groupMedian);

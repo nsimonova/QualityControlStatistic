@@ -4,27 +4,28 @@ namespace QualityControlStatistic.Shewhart.Coefficients
     {
         public double A2(int groupSize)
         {
-            return A2values[groupSize - 1];
+            //TODO: chek boundary values
+            return A2values[groupSize - minimalGroupSize];
         }
 
         public double A4(int groupSize)
         {
-            return A4values[groupSize - 1];
+            return A4values[groupSize - minimalGroupSize];
         }
 
         public double D3(int groupSize)
         {
-            return D3values[groupSize - 1];
+            return D3values[groupSize - minimalGroupSize];
         }
 
         public double D4(int groupSize)
         {
-            return D4values[groupSize - 1];
+            return D4values[groupSize - minimalGroupSize];
         }
 
         public double d2(int groupSize)
         {
-            return d2values[groupSize - 1];
+            return d2values[groupSize - minimalGroupSize];
         }
 
         private readonly double[] A1values = new[] {2.121, 1.732, 1.5, 1.342, 1.225, 1.134, 1.061, 1, 0.949, 0.905, 0.866, 0.832, 0.802, 0.775, 0.75, 0.728, 0.707, 0.688, 0.671, 0.655, 0.64, 0.626, 0.612, 0.6};
@@ -47,5 +48,7 @@ namespace QualityControlStatistic.Shewhart.Coefficients
 
         private readonly double[] d2values = new[] {1.128, 1.693, 2.059, 2.326, 2.534, 2.704, 2.847, 2.97, 3.078, 3.173, 3.258, 3.336, 3.407, 3.472, 3.532, 3.588, 3.64, 3.689, 3.735, 3.778, 3.819, 3.858, 3.895, 3.931};
         private readonly double[] d2revercedValues = new[] {0.8865, 0.5907, 0.4857, 0.4299, 0.3946, 0.3698, 0.3512, 0.3367, 0.3249, 0.3152, 0.3069, 0.2998, 0.2935, 0.288, 0.2831, 0.2784, 0.2747, 0.2711, 0.2677, 0.2647, 0.2618, 0.2592, 0.2567, 0.2544}; // 1/d_2
+
+        private int minimalGroupSize = 2;
     }
 }

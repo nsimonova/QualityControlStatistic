@@ -15,7 +15,9 @@ namespace QualityControlStatistic.Shewhart.Group
 
             foreach (IMeasurement<TMark, double[]> measurementsInGroup in groupValues)
             {
-                double groupDifference = StatisticFunctions.GetAbsoluteDifference(measurementsInGroup.Value);
+                ValidateSize(measurementsInGroup, groupSize, totalGroupsCount);
+
+                double groupDifference = StatisticFunctions.GetDifference(measurementsInGroup.Value);
                 totalDifference += groupDifference;
 
                 chartBuilder.AddMeasurement(measurementsInGroup.Mark, groupDifference);
@@ -26,8 +28,8 @@ namespace QualityControlStatistic.Shewhart.Group
             totalDifference /= totalGroupsCount;
 
             chartBuilder.CentralLine = totalDifference;
-            chartBuilder.UpperControlLevel = coefficients.D3(groupSize) * totalDifference;
-            chartBuilder.LowerControlLevel = coefficients.D4(groupSize) * totalDifference;
+            chartBuilder.UpperControlLevel = coefficients.D4(groupSize) * totalDifference;
+            chartBuilder.LowerControlLevel = coefficients.D3(groupSize) * totalDifference;
 
             return chartBuilder.Build();   
         }
