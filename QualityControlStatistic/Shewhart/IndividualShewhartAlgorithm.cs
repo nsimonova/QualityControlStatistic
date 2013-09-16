@@ -3,13 +3,9 @@ using System.Collections.Generic;
 
 namespace QualityControlStatistic.Shewhart
 {
-    public abstract class IndividualShewhartAlgorithm<TMark, TResult> : ShewhartAlgorithm<TMark, TResult>
+    public abstract class IndividualShewhartAlgorithm<TMark> : ShewhartAlgorithm<TMark>
     {
-        protected IndividualShewhartAlgorithm(IChartBuilder<TMark, TResult> chartBuilder) : base(chartBuilder)
-        {
-        }
-
-        public abstract TResult Calculate(IEnumerable<IMeasurement<TMark, double>> individualValues);
+        public abstract void Calculate(IEnumerable<IMeasurement<TMark, double>> individualValues, IChartBuilder<TMark> chartBuilder);
 
         public double[] GetSlideDifferences(double[] individualValues)
         {

@@ -2,13 +2,9 @@
 
 namespace QualityControlStatistic.Shewhart.Individual
 {
-    public class DifferencesIndividualShewhartAlgorithm<TMark, TResult> : IndividualShewhartAlgorithm<TMark, TResult>
+    public class DifferencesIndividualShewhartAlgorithm<TMark> : IndividualShewhartAlgorithm<TMark>
     {
-        public DifferencesIndividualShewhartAlgorithm(IChartBuilder<TMark, TResult> chartBuilder) : base(chartBuilder)
-        {
-        }
-
-        public override TResult Calculate(IEnumerable<IMeasurement<TMark, double>> individualValues)
+        public override void Calculate(IEnumerable<IMeasurement<TMark, double>> individualValues, IChartBuilder<TMark> chartBuilder)
         {
             double totalDifference = 0;
             double previousValue = 0;
@@ -39,8 +35,6 @@ namespace QualityControlStatistic.Shewhart.Individual
             chartBuilder.CentralLine = totalDifference;
             chartBuilder.UpperControlLevel = coefficients.D4(2) * totalDifference;
             chartBuilder.LowerControlLevel = coefficients.D3(2) * totalDifference;
-
-            return chartBuilder.Build();
         }
     }
 }

@@ -2,13 +2,9 @@ using System.Collections.Generic;
 
 namespace QualityControlStatistic.Shewhart.Individual
 {
-    public class AverageValuesIndividualShewhartAlgorithm<TMark, TResult> : IndividualShewhartAlgorithm<TMark, TResult>
+    public class AverageValuesIndividualShewhartAlgorithm<TMark> : IndividualShewhartAlgorithm<TMark>
     {
-        public AverageValuesIndividualShewhartAlgorithm(IChartBuilder<TMark, TResult> chartBuilder) : base(chartBuilder)
-        {
-        }
-
-        public override TResult Calculate(IEnumerable<IMeasurement<TMark, double>> individualValues)
+        public override void Calculate(IEnumerable<IMeasurement<TMark, double>> individualValues, IChartBuilder<TMark> chartBuilder)
         {
             double totalDifference = 0;
             double totalAverage = 0;
@@ -43,8 +39,6 @@ namespace QualityControlStatistic.Shewhart.Individual
             chartBuilder.CentralLine = totalAverage;
             chartBuilder.UpperControlLevel = totalAverage + (3 / coefficients.d2(2)) * totalDifference;
             chartBuilder.LowerControlLevel = totalAverage - (3 / coefficients.d2(2)) * totalDifference;
-
-            return chartBuilder.Build();
         }
     }
 }

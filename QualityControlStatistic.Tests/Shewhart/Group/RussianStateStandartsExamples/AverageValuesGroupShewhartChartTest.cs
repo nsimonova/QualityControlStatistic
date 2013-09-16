@@ -9,8 +9,7 @@ namespace QualityControlStatistic.Tests.Shewhart.Group.RussianStateStandartsExam
         [TestMethod]
         public void Test()
         {
-            AverageValuesGroupShewhartAlgorithm<int, TestShewhartResult> algotithm = new AverageValuesGroupShewhartAlgorithm<int, TestShewhartResult>(new TestShewhartChartBuilder());
-            TestShewhartResult result = algotithm.Calculate(wrappedMeasurements, 4);
+            TestShewhartResult result = ExecuteAlgorithm<AverageValuesGroupShewhartAlgorithm<int>>(4);
 
             AssertWithPrecision(0.1924, result.CentralLine);
             AssertWithPrecision(0.2133, result.UpperControlLevel);

@@ -11,8 +11,7 @@ namespace QualityControlStatistic.Tests.Shewhart.Group.RussianStateStandartsExam
         {
             precision = 0.001;
 
-            DifferencesGroupShewhartAlgorithm<int, TestShewhartResult> algorithm = new DifferencesGroupShewhartAlgorithm<int, TestShewhartResult>(new TestShewhartChartBuilder());
-            TestShewhartResult result = algorithm.Calculate(wrappedMeasurements, 4);
+            TestShewhartResult result = ExecuteAlgorithm<DifferencesGroupShewhartAlgorithm<int>>(4);
 
             AssertWithPrecision(0.0287, result.CentralLine);
             AssertWithPrecision(0.0655, result.UpperControlLevel);

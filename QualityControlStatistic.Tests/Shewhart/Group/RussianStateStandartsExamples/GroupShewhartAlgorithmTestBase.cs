@@ -1,5 +1,6 @@
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using QualityControlStatistic.Shewhart;
 
 namespace QualityControlStatistic.Tests.Shewhart.Group.RussianStateStandartsExamples
 {
@@ -11,12 +12,12 @@ namespace QualityControlStatistic.Tests.Shewhart.Group.RussianStateStandartsExam
         public virtual void SetUp()
         {
             int groupNumber = 0;
-            wrappedMeasurements = Enumerable.Select(measurements, x =>
+            wrappedMeasurements = measurements.Select(x =>
                 {
                     ++groupNumber;
                     return new TestGroupMeasurement(groupNumber, x);
                 })
-                .ToArray();
+            .ToArray();
         }
 
         protected double[][] measurements = new[] {
@@ -47,6 +48,17 @@ namespace QualityControlStatistic.Tests.Shewhart.Group.RussianStateStandartsExam
         protected static void AssertWithPrecision(double expected, double actual)
         {
             Assert.AreEqual(expected, actual, precision);
+        }
+
+        protected TestShewhartResult ExecuteAlgorithm<TAlgorithm>(int groupSize) where TAlgorithm : GroupShewhartAlgorithm<int>, new()
+        {
+            TestShewhartChartBuilder chartBuilder = new TestShewhartChartBuilder();
+            TAlgorithm algorithm = new TAlgorithm();
+            algorithm.Calculate(wrappedMeasurements, groupSize, chartBuilder);
+
+            TestShewhartResult result = chartBuilder.Build();
+
+            return result;
         }
     }
 }

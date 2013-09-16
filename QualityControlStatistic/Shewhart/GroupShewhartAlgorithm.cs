@@ -3,11 +3,9 @@ using System.Collections.Generic;
 
 namespace QualityControlStatistic.Shewhart
 {
-    public abstract class GroupShewhartAlgorithm<TMark, TResult> : ShewhartAlgorithm<TMark, TResult>
+    public abstract class GroupShewhartAlgorithm<TMark> : ShewhartAlgorithm<TMark>
     {
-        protected GroupShewhartAlgorithm(IChartBuilder<TMark, TResult> chartBuilder) : base(chartBuilder)
-        {
-        }
+        public abstract void Calculate(IEnumerable<IMeasurement<TMark, double[]>> groupValues, int groupSize, IChartBuilder<TMark> chartBuilder);
 
         protected void ValidateSize(IMeasurement<TMark, double[]> values, int minimumSize, int orderGroupNumber)
         {
@@ -16,7 +14,5 @@ namespace QualityControlStatistic.Shewhart
                 throw new ArgumentException("Actual size of group " + orderGroupNumber + " is less than specified group size", "minimumSize");
             }
         }
-
-        public abstract TResult Calculate(IEnumerable<IMeasurement<TMark, double[]>> groupValues, int groupSize);
     }
 }

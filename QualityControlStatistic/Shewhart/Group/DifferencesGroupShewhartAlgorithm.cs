@@ -2,13 +2,9 @@ using System.Collections.Generic;
 
 namespace QualityControlStatistic.Shewhart.Group
 {
-    public class DifferencesGroupShewhartAlgorithm<TMark, TResult> : GroupShewhartAlgorithm<TMark, TResult>
+    public class DifferencesGroupShewhartAlgorithm<TMark> : GroupShewhartAlgorithm<TMark>
     {
-        public DifferencesGroupShewhartAlgorithm(IChartBuilder<TMark, TResult> chartBuilder) : base(chartBuilder)
-        {
-        }
-
-        public override TResult Calculate(IEnumerable<IMeasurement<TMark, double[]>> groupValues, int groupSize)
+        public override void Calculate(IEnumerable<IMeasurement<TMark, double[]>> groupValues, int groupSize, IChartBuilder<TMark> chartBuilder)
         {
             double totalDifference = 0;
             int totalGroupsCount = 0;
@@ -30,8 +26,6 @@ namespace QualityControlStatistic.Shewhart.Group
             chartBuilder.CentralLine = totalDifference;
             chartBuilder.UpperControlLevel = coefficients.D4(groupSize) * totalDifference;
             chartBuilder.LowerControlLevel = coefficients.D3(groupSize) * totalDifference;
-
-            return chartBuilder.Build();   
         }
     }
 }

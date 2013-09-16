@@ -2,16 +2,14 @@ using QualityControlStatistic.Shewhart.Coefficients;
 
 namespace QualityControlStatistic.Shewhart
 {
-    public abstract class ShewhartAlgorithm<TMark, TResult>
+    public abstract class ShewhartAlgorithm<TMark>
     {
-        protected ShewhartAlgorithm(IChartBuilder<TMark, TResult> chartBuilder)
+        protected ShewhartAlgorithm()
         {
-            this.chartBuilder = chartBuilder;
             //TODO make constructor with this parameter
             this.coefficients = new HardCodedShewhartCoefficientsTable();
         }
 
         protected IShewhartCoefficientsTable coefficients;
-        protected IChartBuilder<TMark, TResult> chartBuilder;
     }
 }

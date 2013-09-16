@@ -3,13 +3,9 @@ using System.Collections.Generic;
 
 namespace QualityControlStatistic.Shewhart.Group
 {
-    public class MedianGroupShewhartAlgorithm<TMark, TResult> : GroupShewhartAlgorithm<TMark, TResult>
+    public class MedianGroupShewhartAlgorithm<TMark> : GroupShewhartAlgorithm<TMark>
     {
-        public MedianGroupShewhartAlgorithm(IChartBuilder<TMark, TResult> chartBuilder) : base(chartBuilder)
-        {
-        }
-
-        public override TResult Calculate(IEnumerable<IMeasurement<TMark, double[]>> groupValues, int groupSize)
+        public override void Calculate(IEnumerable<IMeasurement<TMark, double[]>> groupValues, int groupSize, IChartBuilder<TMark> chartBuilder)
         {
             double totalDifference = 0;
             double totalMedian = 0;
@@ -36,8 +32,6 @@ namespace QualityControlStatistic.Shewhart.Group
             chartBuilder.CentralLine = totalMedian;
             chartBuilder.UpperControlLevel = totalMedian + coefficients.A4(groupSize) * totalDifference;
             chartBuilder.LowerControlLevel = totalMedian - coefficients.A4(groupSize) * totalDifference;
-
-            return chartBuilder.Build();
         }
     }
 }

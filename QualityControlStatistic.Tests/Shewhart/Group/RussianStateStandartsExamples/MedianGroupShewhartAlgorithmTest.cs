@@ -34,8 +34,7 @@ namespace QualityControlStatistic.Tests.Shewhart.Group.RussianStateStandartsExam
         [TestMethod]
         public void Test()
         {
-            MedianGroupShewhartAlgorithm<int, TestShewhartResult> algorithm = new MedianGroupShewhartAlgorithm<int, TestShewhartResult>(new TestShewhartChartBuilder());
-            TestShewhartResult result = algorithm.Calculate(wrappedMeasurements, 5);
+            TestShewhartResult result = ExecuteAlgorithm<MedianGroupShewhartAlgorithm<int>>(5);
 
             AssertWithPrecision(11.47, result.CentralLine);
             AssertWithPrecision(15.42, result.UpperControlLevel);
