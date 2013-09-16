@@ -4,7 +4,7 @@ using QualityControlStatistic.Shewhart;
 
 namespace QualityControlStatistic.Tests.Shewhart.Group.RussianStateStandartsExamples
 {
-    public class GroupShewhartAlgorithmTestBase
+    public class GroupShewhartAlgorithmTestBase : ShewhartAlgorithmTestBase
     {
         protected TestGroupMeasurement[] wrappedMeasurements;
 
@@ -42,13 +42,6 @@ namespace QualityControlStatistic.Tests.Shewhart.Group.RussianStateStandartsExam
             new[] {0.1700, 0.1567, 0.1694, 0.1702 },
             new[] {0.1698, 0.1664, 0.1700, 0.1600 }
         };
-
-        protected static double precision = 0.0001;
-
-        protected static void AssertWithPrecision(double expected, double actual)
-        {
-            Assert.AreEqual(expected, actual, precision);
-        }
 
         protected TestShewhartResult ExecuteAlgorithm<TAlgorithm>(int groupSize) where TAlgorithm : GroupShewhartAlgorithm<int>, new()
         {

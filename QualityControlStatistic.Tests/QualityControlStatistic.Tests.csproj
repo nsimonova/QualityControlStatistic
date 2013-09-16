@@ -51,14 +51,17 @@
     <Compile Include="Shewhart\Group\RussianStateStandartsExamples\GroupShewhartAlgorithmTestBase.cs" />
     <Compile Include="Shewhart\Group\RussianStateStandartsExamples\MedianGroupShewhartAlgorithmTest.cs" />
     <Compile Include="Shewhart\Group\TestGroupMeasurement.cs" />
+    <Compile Include="Shewhart\Individual\AverageValuesIndividualShewhartAlgorithmTest.cs" />
+    <Compile Include="Shewhart\Individual\IndividualShewhartAlgorithmTestBase.cs" />
+    <Compile Include="Shewhart\Individual\DifferencesIndividualShewhartAlgorithmTest.cs" />
+    <Compile Include="Shewhart\Individual\TestIndividualMeasurement.cs" />
+    <Compile Include="Shewhart\ShewhartAlgorithmTestBase.cs" />
     <Compile Include="Shewhart\TestPoint.cs" />
     <Compile Include="Shewhart\TestShewhartChartBuilder.cs" />
     <Compile Include="Shewhart\TestShewhartResult.cs" />
     <Compile Include="StatisticFunctionsTest.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Shewhart\Individual\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\QualityControlStatistic\QualityControlStatistic.csproj">
       <Project>{C84C8EFF-7752-4958-AB09-3FD7EB5A136C}</Project>

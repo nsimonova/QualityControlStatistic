@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace QualityControlStatistic.Shewhart.Individual
 {
@@ -15,6 +16,8 @@ namespace QualityControlStatistic.Shewhart.Individual
 
             foreach (IMeasurement<TMark, double> measurement in individualValues)
             {
+                ++totalGroupsCount;
+
                 if (isFirst)
                 {
                     previousValue = measurement.Value;
@@ -22,15 +25,14 @@ namespace QualityControlStatistic.Shewhart.Individual
                     continue;
                 }
 
-                double currentDifference = measurement.Value - previousValue;
+                double currentDifference = Math.Abs(measurement.Value - previousValue);
                 totalDifference += currentDifference;
+                previousValue = measurement.Value;
 
                 chartBuilder.AddMeasurement(measurement.Mark, currentDifference);
-
-                ++totalGroupsCount;
             }
 
-            totalDifference /= totalGroupsCount;
+            totalDifference /= (totalGroupsCount - 1);
 
             chartBuilder.CentralLine = totalDifference;
             chartBuilder.UpperControlLevel = coefficients.D4(2) * totalDifference;

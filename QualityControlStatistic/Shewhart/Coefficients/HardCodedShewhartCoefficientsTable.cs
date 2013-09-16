@@ -1,6 +1,6 @@
 namespace QualityControlStatistic.Shewhart.Coefficients
 {
-    public class HardCodedShewhartCoefficientsTable : IShewhartCoefficientsTable
+    public class RussianStandartShewhartCoefficientsTable : IShewhartCoefficientsTable
     {
         public double A2(int groupSize)
         {

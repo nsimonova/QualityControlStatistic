@@ -7,7 +7,7 @@ namespace QualityControlStatistic.Shewhart
         protected ShewhartAlgorithm()
         {
             //TODO make constructor with this parameter
-            this.coefficients = new HardCodedShewhartCoefficientsTable();
+            this.coefficients = new RussianStandartShewhartCoefficientsTable();
         }
 
         protected IShewhartCoefficientsTable coefficients;
