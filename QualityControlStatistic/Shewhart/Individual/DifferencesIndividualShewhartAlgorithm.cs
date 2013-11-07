@@ -17,7 +17,6 @@ namespace QualityControlStatistic.Shewhart.Individual
             foreach (IMeasurement<TMark, double> measurement in individualValues)
             {
                 ++totalGroupsCount;
-
                 if (isFirst)
                 {
                     previousValue = measurement.Value;

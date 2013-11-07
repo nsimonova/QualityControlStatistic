@@ -17,9 +17,10 @@ namespace QualityControlStatistic.Shewhart.Individual
 
             foreach (IMeasurement<TMark, double> measurement in individualValues)
             {
+                chartBuilder.AddMeasurement(measurement.Mark, measurement.Value);
                 totalAverage += measurement.Value;
-                ++totalGroupsCount;
 
+                ++totalGroupsCount;
                 if (isFirst)
                 {
                     previousValue = measurement.Value;
@@ -28,10 +29,8 @@ namespace QualityControlStatistic.Shewhart.Individual
                 }
 
                 double groupDifference = Math.Abs(measurement.Value - previousValue);
-                previousValue = measurement.Value;
-
                 totalDifference += groupDifference;
-                chartBuilder.AddMeasurement(measurement.Mark, groupDifference);
+                previousValue = measurement.Value;
             }
 
             totalAverage /= totalGroupsCount;
